@@ -1,0 +1,9 @@
+﻿[Wait]
+Path=3.cur
+
+[Arrow]
+Path=default.cur
+
+[Hand]
+Path=hand.cur
+

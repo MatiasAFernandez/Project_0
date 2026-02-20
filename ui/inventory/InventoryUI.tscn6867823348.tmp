@@ -1,0 +1,136 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmmpmivhigitk"]
+
+[ext_resource type="Script" uid="uid://dkhtoas666w6l" path="res://ui/inventory/InventoryUI.gd" id="1_h7hxg"]
+[ext_resource type="Texture2D" uid="uid://savw271qibfr" path="res://tests/art/inventory/human-body-frontal.jpg" id="2_gvwsh"]
+[ext_resource type="Script" uid="uid://cqj72lut060xw" path="res://ui/inventory/InventoryDropZone.gd" id="2_hyjtp"]
+[ext_resource type="PackedScene" uid="uid://bg3uuter60hmo" path="res://ui/inventory/ItemTooltip.tscn" id="3_gvwsh"]
+[ext_resource type="PackedScene" uid="uid://dbywbpmrfju4e" path="res://ui/inventory/EquipmentSlotUI.tscn" id="3_hu5s4"]
+[ext_resource type="PackedScene" uid="uid://5368p24nlnis" path="res://ui/inventory/ContextMenu.tscn" id="4_73x1u"]
+[ext_resource type="Script" uid="uid://coh8ajyq74rw" path="res://ui/inventory/InventoryListDropZone.gd" id="5_3uskr"]
+
+[node name="InventoryUI" type="CanvasLayer" groups=["InventoryUI"]]
+layer = 10
+script = ExtResource("1_h7hxg")
+
+[node name="BackgroundBlocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+script = ExtResource("2_hyjtp")
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(800, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
+layout_mode = 2
+
+[node name="EquipmentSide" type="TextureRect" parent="MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture = ExtResource("2_gvwsh")
+expand_mode = 1
+
+[node name="HelmetSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 20.0
+offset_right = 312.0
+offset_bottom = 84.0
+slot_name = "Head"
+
+[node name="ChestSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 117.0
+offset_right = 231.0
+offset_bottom = 181.0
+slot_name = "Chest"
+
+[node name="LeftHandSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 126.0
+offset_right = 378.0
+offset_bottom = 190.0
+slot_name = "OffHand"
+
+[node name="RightHandSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 124.0
+offset_right = 88.0
+offset_bottom = 188.0
+
+[node name="LegsSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 296.0
+offset_right = 334.0
+offset_bottom = 360.0
+slot_name = "Legs"
+
+[node name="BootsSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 427.0
+offset_right = 333.0
+offset_bottom = 491.0
+slot_name = "Boots"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_3uskr")
+
+[node name="ItemListContainer" type="VBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="TooltipLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="MainTooltip" parent="TooltipLayer" instance=ExtResource("3_gvwsh")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 86.0
+
+[node name="CompareTooltip" parent="TooltipLayer" instance=ExtResource("3_gvwsh")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 86.0
+
+[node name="ContextMenu" parent="." instance=ExtResource("4_73x1u")]
+visible = false
+
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/HelmetSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/ChestSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/LeftHandSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/RightHandSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/LegsSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/BootsSlot" to="." method="_on_equipment_slot_right_clicked"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ddn7aw4bwi37o"]
+
+[ext_resource type="Texture2D" uid="uid://bx0yxlei6xd6y" path="res://tests/art/items/health_potion.png" id="1_2gcvy"]
+[ext_resource type="Script" uid="uid://urlqv45qix8w" path="res://game/inventory/resources/ConsumableData.gd" id="1_d5tsv"]
+
+[resource]
+script = ExtResource("1_d5tsv")
+name = "Pocion de Salud"
+type = 0
+icon = ExtResource("1_2gcvy")
+description = "Restaura vida"
+max_stack_size = 100
+effect_description = "Cura +30"
+consumable_data = {
+"Cura HP": 30
+}
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

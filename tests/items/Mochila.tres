@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c4mij5gdh5ypq"]
+
+[ext_resource type="Texture2D" uid="uid://dvp6j5ka5wdam" path="res://tests/art/items/backpack.png" id="1_0srtn"]
+[ext_resource type="Script" uid="uid://dt2ms4la5tca4" path="res://game/inventory/resources/ItemData.gd" id="1_g0x6t"]
+
+[resource]
+script = ExtResource("1_g0x6t")
+name = "Mochila"
+type = 11
+icon = ExtResource("1_0srtn")
+description = "Es una mochila"
+is_quest_item = true
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

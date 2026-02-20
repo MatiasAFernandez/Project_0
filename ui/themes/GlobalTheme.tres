@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba1tketwal2se"]
+
+[ext_resource type="FontFile" uid="uid://b8122jp3gp40" path="res://assets/fonts/font.otf" id="1_ul2x4"]
+
+[resource]
+default_font = ExtResource("1_ul2x4")
+default_font_size = 20

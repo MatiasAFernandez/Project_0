@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://3ln1vbd3rgn6"]
+
+[ext_resource type="PackedScene" uid="uid://dln8nl77wnni4" path="res://game/exploration/locations/BaseLocation.tscn" id="1_udf50"]
+[ext_resource type="PackedScene" uid="uid://baifuqpoyltbf" path="res://game/exploration/interactables/ClickableArea.tscn" id="2_63hxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63hxe"]
+size = Vector2(209, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30c2s"]
+size = Vector2(44, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of6g5"]
+size = Vector2(301, 93.5)
+
+[node name="ZonaC" instance=ExtResource("1_udf50")]
+location_name = "ZonaC"
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Sky" index="0"]
+offset_left = -38.0
+offset_top = -17.0
+offset_right = 1195.0
+offset_bottom = 92.0
+mouse_filter = 2
+color = Color(0.5647059, 0.34901962, 0.24313726, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Midground" index="0"]
+offset_left = -31.0
+offset_top = 80.0
+offset_right = 1207.0
+offset_bottom = 625.0
+mouse_filter = 2
+color = Color(0.37254903, 0.50980395, 0.45490196, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Layers/Midground" index="1"]
+offset_left = 830.0
+offset_top = 184.0
+offset_right = 1039.0
+offset_bottom = 387.0
+mouse_filter = 2
+color = Color(0.40392157, 0.74509805, 0.7882353, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Layers/Midground" index="2"]
+offset_left = 823.0
+offset_top = 271.0
+offset_right = 1045.0
+offset_bottom = 299.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Layers/Midground" index="3"]
+offset_left = 920.0
+offset_top = 179.0
+offset_right = 946.0
+offset_bottom = 393.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Ventana" parent="Layers/Midground" index="4" instance=ExtResource("2_63hxe")]
+target_scene = "uid://dfm2egx1qspr2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Midground/Ventana" index="0"]
+position = Vector2(933.5, 284.5)
+shape = SubResource("RectangleShape2D_63hxe")
+
+[node name="Palanca" parent="Layers/Midground" index="5" instance=ExtResource("2_63hxe")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Midground/Palanca" index="0"]
+position = Vector2(498, 271)
+shape = SubResource("RectangleShape2D_30c2s")
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Foreground" index="0"]
+offset_left = -50.0
+offset_top = 512.0
+offset_right = 1228.0
+offset_bottom = 682.0
+mouse_filter = 2
+color = Color(0.7294118, 0.32941177, 0.23529412, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Layers/Foreground" index="1"]
+offset_left = 23.0
+offset_top = 536.0
+offset_right = 317.0
+offset_bottom = 625.0
+mouse_filter = 2
+color = Color(0.38039216, 0, 0.023529412, 1)
+
+[node name="Escalera_baja" parent="Layers/Foreground" index="2" instance=ExtResource("2_63hxe")]
+target_scene = "uid://d3s5eapw7ee64"
+cursor_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Foreground/Escalera_baja" index="0"]
+position = Vector2(168.5, 581.25)
+shape = SubResource("RectangleShape2D_of6g5")

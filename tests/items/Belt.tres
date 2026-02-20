@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dn8khkkwkmdt6"]
+
+[ext_resource type="Texture2D" uid="uid://deo2olvvpepby" path="res://tests/art/items/Cinto.png" id="1_k8w7i"]
+[ext_resource type="Script" uid="uid://3s5ewcod7b3q" path="res://game/inventory/resources/ArmorData.gd" id="2_70wy3"]
+
+[resource]
+script = ExtResource("2_70wy3")
+name = "Cinto"
+type = 5
+rarity = 1
+icon = ExtResource("1_k8w7i")
+description = "Cinto"
+armor_rating = 3.4
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

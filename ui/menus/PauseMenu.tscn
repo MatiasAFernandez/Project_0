@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://crl52anlep8fc"]
+
+[ext_resource type="Script" uid="uid://duahgqjy8yjwc" path="res://ui/menus/PauseMenu.gd" id="1_7lf2u"]
+[ext_resource type="PackedScene" uid="uid://dop3mcmk2rofy" path="res://ui/menus/OptionsMenu.tscn" id="2_auil5"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7lf2u")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MenuHolder" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="MenuHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="MenuHolder/Center"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuHolder/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "El juego esta pausado"
+
+[node name="Spacer" type="Control" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnResume" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reanudar"
+
+[node name="BtnMainMenu" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Menu Principal"
+
+[node name="BtnSave" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Guardar"
+
+[node name="BtnLoad" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Cargar"
+
+[node name="BtnOptions" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Opciones"
+
+[node name="BtnExit" type="Button" parent="MenuHolder/Center/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Salir"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_auil5")]
+visible = false
+layout_mode = 1
+
+[node name="ExitConfirmation" type="ConfirmationDialog" parent="."]

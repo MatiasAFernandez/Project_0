@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://dop3mcmk2rofy"]
+
+[ext_resource type="PackedScene" uid="uid://c6hmfoo288ajw" path="res://ui/menus/tabs/GeneralTab.tscn" id="1_6uhcl"]
+[ext_resource type="Script" uid="uid://bal8jjoh7pg2k" path="res://ui/menus/OptionsMenu.gd" id="1_x6qd0"]
+[ext_resource type="PackedScene" uid="uid://ncdkbppjyki5" path="res://ui/menus/tabs/VideoTab.tscn" id="2_x6qd0"]
+[ext_resource type="PackedScene" uid="uid://c8nr44w3nla2w" path="res://ui/menus/tabs/AudioTab.tscn" id="3_1k7qo"]
+[ext_resource type="PackedScene" uid="uid://bctg3xpvm5rxp" path="res://ui/menus/tabs/ControlsTab.tscn" id="4_b2ksx"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_x6qd0")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Root" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Root/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Root/Panel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+
+[node name="BtnClose" type="Button" parent="Root/Panel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+
+[node name="TabArea" type="Control" parent="Root/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tabs" type="TabContainer" parent="Root/Panel/MarginContainer/VBoxContainer/TabArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/side_margin = 20
+theme_override_constants/tab_separation = 10
+theme_override_constants/icon_separation = 10
+theme_override_constants/icon_max_width = 10
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 30
+current_tab = 0
+
+[node name="General" parent="Root/Panel/MarginContainer/VBoxContainer/TabArea/Tabs" instance=ExtResource("1_6uhcl")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Video" parent="Root/Panel/MarginContainer/VBoxContainer/TabArea/Tabs" instance=ExtResource("2_x6qd0")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Audio" parent="Root/Panel/MarginContainer/VBoxContainer/TabArea/Tabs" instance=ExtResource("3_1k7qo")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Controls" parent="Root/Panel/MarginContainer/VBoxContainer/TabArea/Tabs" instance=ExtResource("4_b2ksx")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Footer" type="HBoxContainer" parent="Root/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Spacer" type="Control" parent="Root/Panel/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+
+[node name="BtnReset" type="Button" parent="Root/Panel/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Restaurar Configuracion"
+
+[node name="BtnBack" type="Button" parent="Root/Panel/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "Volver"
+
+[node name="ResetConfirmDialog" type="ConfirmationDialog" parent="."]
+mode = 4
+dialog_text = "¿Estás seguro de que quieres restablecer toda la configuración a los valores por defecto?"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://03wxc8b3akyd"]
+
+[ext_resource type="Script" uid="uid://chy4dd0klo6id" path="res://game/inventory/resources/WeaponData.gd" id="1_5hya6"]
+[ext_resource type="Texture2D" uid="uid://l5kqpqxbirm1" path="res://tests/art/items/sword_sprite.png" id="1_6fsu0"]
+
+[resource]
+script = ExtResource("1_5hya6")
+name = "Espada Simple"
+type = 8
+rarity = 2
+icon = ExtResource("1_6fsu0")
+description = "No corta"
+weapon_damage = 21.0
+crit_chance = 1.0
+crit_multiplier = 2.5
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

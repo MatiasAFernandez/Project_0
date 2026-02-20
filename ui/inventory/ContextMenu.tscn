@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://5368p24nlnis"]
+
+[ext_resource type="Script" uid="uid://me0c8nxfyfc8" path="res://ui/inventory/ContextMenu.gd" id="1_s0521"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6icq"]
+bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.8627451)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="ContextMenu" type="PanelContainer"]
+z_index = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6icq")
+script = ExtResource("1_s0521")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2

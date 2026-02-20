@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ddxypttgkk6u"]
+
+[ext_resource type="Texture2D" uid="uid://b42lfu2uioed6" path="res://tests/art/items/daga2.png" id="1_igr5e"]
+[ext_resource type="Script" uid="uid://chy4dd0klo6id" path="res://game/inventory/resources/WeaponData.gd" id="2_g1lur"]
+
+[resource]
+script = ExtResource("2_g1lur")
+name = "Daga 2"
+type = 7
+rarity = 2
+icon = ExtResource("1_igr5e")
+description = "Otro cuchillo corto"
+weapon_damage = 13.0
+crit_multiplier = 3.0
+is_dual_wieldable = true
+attributes_required = {
+"Agilidad": 12
+}
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

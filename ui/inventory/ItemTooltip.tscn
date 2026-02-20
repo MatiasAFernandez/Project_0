@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3uuter60hmo"]
+
+[ext_resource type="Script" uid="uid://crge2nq8urft5" path="res://ui/inventory/ItemTooltip.gd" id="1_q64od"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d04s6"]
+bg_color = Color(0.2627451, 0.2627451, 0.2627451, 0.74509805)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.7882353)
+shadow_offset = Vector2(-10, 10)
+
+[node name="ItemTooltip" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_d04s6")
+script = ExtResource("1_q64od")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LblSlotTag" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="LblName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="LblType" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="LblHandEquip" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LblStats" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LblRequirements" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dyn043cj8dnus"]
+
+[ext_resource type="Texture2D" uid="uid://c7cq4q0dgasgj" path="res://tests/art/items/shield.png" id="1_22hcd"]
+[ext_resource type="Script" uid="uid://c36v0hxdsa6r0" path="res://game/inventory/resources/ShieldData.gd" id="1_baimh"]
+
+[resource]
+script = ExtResource("1_baimh")
+name = "Escudo"
+type = 10
+rarity = 4
+icon = ExtResource("1_22hcd")
+description = "Protege"
+shield_protection = 30.0
+fatigue_rate = 3.5
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

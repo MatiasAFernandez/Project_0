@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://drho5geo85d2h"]
+
+[ext_resource type="Texture2D" uid="uid://cqjrethxxmrvy" path="res://tests/art/items/1.png" id="1_s3ttk"]
+[ext_resource type="Script" uid="uid://chy4dd0klo6id" path="res://game/inventory/resources/WeaponData.gd" id="2_64785"]
+
+[resource]
+script = ExtResource("2_64785")
+name = "Espada Maestra"
+type = 9
+rarity = 3
+icon = ExtResource("1_s3ttk")
+description = "Si corta"
+weapon_damage = 50.0
+crit_chance = 3.0
+crit_multiplier = 12.0
+metadata/_custom_type_script = "uid://dt2ms4la5tca4"

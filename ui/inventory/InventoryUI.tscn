@@ -1,0 +1,298 @@
+[gd_scene load_steps=22 format=3 uid="uid://bmmpmivhigitk"]
+
+[ext_resource type="Script" uid="uid://dkhtoas666w6l" path="res://ui/inventory/InventoryUI.gd" id="1_h7hxg"]
+[ext_resource type="Texture2D" uid="uid://savw271qibfr" path="res://tests/art/inventory/human-body-frontal.jpg" id="2_gvwsh"]
+[ext_resource type="Script" uid="uid://cqj72lut060xw" path="res://ui/inventory/InventoryDropZone.gd" id="2_hyjtp"]
+[ext_resource type="PackedScene" uid="uid://c36aavhfqqqo2" path="res://ui/inventory/InventorySlotUI.tscn" id="2_p6shn"]
+[ext_resource type="PackedScene" uid="uid://bg3uuter60hmo" path="res://ui/inventory/ItemTooltip.tscn" id="3_gvwsh"]
+[ext_resource type="PackedScene" uid="uid://dbywbpmrfju4e" path="res://ui/inventory/EquipmentSlotUI.tscn" id="3_hu5s4"]
+[ext_resource type="PackedScene" uid="uid://5368p24nlnis" path="res://ui/inventory/ContextMenu.tscn" id="4_73x1u"]
+[ext_resource type="Script" uid="uid://coh8ajyq74rw" path="res://ui/inventory/InventoryListDropZone.gd" id="5_3uskr"]
+[ext_resource type="Texture2D" uid="uid://vpba0wsxfus2" path="res://tests/art/inventory/filters/all.png" id="5_mln7m"]
+[ext_resource type="Texture2D" uid="uid://cmb1ceema2fd1" path="res://tests/art/inventory/filters/consumable.png" id="6_moyfi"]
+[ext_resource type="Texture2D" uid="uid://bkfuqkjyxb2tn" path="res://tests/art/inventory/filters/weapon_short.png" id="7_p6shn"]
+[ext_resource type="Texture2D" uid="uid://c8xn54tnhsyxq" path="res://tests/art/inventory/filters/weapon_medium.png" id="8_kgl3t"]
+[ext_resource type="Texture2D" uid="uid://de3gjv4tq0fi1" path="res://tests/art/inventory/filters/weapon_heavy.png" id="9_hn1ac"]
+[ext_resource type="Texture2D" uid="uid://hfddjbsihbhw" path="res://tests/art/inventory/filters/helmet.png" id="10_6asax"]
+[ext_resource type="Texture2D" uid="uid://b0tyhqeoophct" path="res://tests/art/inventory/filters/shield.png" id="10_moyfi"]
+[ext_resource type="Texture2D" uid="uid://dtalxu58pfnl8" path="res://tests/art/inventory/filters/chest.png" id="11_a58ny"]
+[ext_resource type="Texture2D" uid="uid://7tg4prkmba7l" path="res://tests/art/inventory/filters/arms.png" id="12_pfxef"]
+[ext_resource type="Texture2D" uid="uid://cik8kskqyiwd1" path="res://tests/art/inventory/filters/boots.png" id="13_bm6oh"]
+[ext_resource type="Texture2D" uid="uid://d0mgi2dunwxl5" path="res://tests/art/inventory/filters/cape.png" id="14_f7ycs"]
+[ext_resource type="Texture2D" uid="uid://b12bnm3a2o447" path="res://tests/art/inventory/filters/belt.png" id="15_8bw5x"]
+[ext_resource type="Texture2D" uid="uid://dprcplghuqikq" path="res://tests/art/inventory/filters/quest.png" id="16_bsgoa"]
+
+[node name="InventoryUI" type="Control" groups=["InventoryUI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7hxg")
+slot_scene = ExtResource("2_p6shn")
+
+[node name="BackgroundBlocker" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+script = ExtResource("2_hyjtp")
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="EquipmentSide" type="TextureRect" parent="MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("2_gvwsh")
+expand_mode = 1
+
+[node name="HelmetSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 398.0
+offset_right = 88.0
+offset_bottom = 462.0
+mouse_filter = 0
+slot_name = "Head"
+
+[node name="ChestSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 488.0
+offset_right = 88.0
+offset_bottom = 552.0
+mouse_filter = 0
+slot_name = "Chest"
+
+[node name="CapeSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 35.0
+offset_right = 88.0
+offset_bottom = 99.0
+mouse_filter = 0
+slot_name = "Cape"
+
+[node name="LeftHandSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 190.0
+offset_right = 378.0
+offset_bottom = 254.0
+mouse_filter = 0
+slot_name = "OffHand"
+
+[node name="RightHandSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 190.0
+offset_right = 88.0
+offset_bottom = 254.0
+mouse_filter = 0
+
+[node name="BeltSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 39.0
+offset_right = 378.0
+offset_bottom = 103.0
+mouse_filter = 0
+slot_name = "Belt"
+
+[node name="ArmsSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 398.0
+offset_right = 378.0
+offset_bottom = 462.0
+mouse_filter = 0
+slot_name = "Legs"
+
+[node name="BootsSlot" parent="MainPanel/HBoxContainer/EquipmentSide" instance=ExtResource("3_hu5s4")]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 488.0
+offset_right = 378.0
+offset_bottom = 552.0
+mouse_filter = 0
+slot_name = "Boots"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderControls" type="VBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SortSection" type="HBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/SortSection"]
+layout_mode = 2
+text = "Ordenar Por:"
+
+[node name="SortOptionButton" type="OptionButton" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/SortSection"]
+layout_mode = 2
+
+[node name="FilterSection" type="HBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls"]
+layout_mode = 2
+
+[node name="BtnFilterALL" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("5_mln7m")
+expand_icon = true
+metadata/filter_type = "ALL"
+
+[node name="BtnFilterCONSUMABLE" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("6_moyfi")
+expand_icon = true
+metadata/filter_type = "CONSUMABLE"
+
+[node name="BtnFilterWEAPON_SHORT" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("7_p6shn")
+expand_icon = true
+metadata/filter_type = "WEAPON_SHORT"
+
+[node name="BtnFilterWEAPON_MEDIUM" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("8_kgl3t")
+expand_icon = true
+metadata/filter_type = "WEAPON_MEDIUM"
+
+[node name="BtnFilterWEAPON_HEAVY" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("9_hn1ac")
+expand_icon = true
+metadata/filter_type = "WEAPON_HEAVY"
+
+[node name="BtnFilterSHIELD" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("10_moyfi")
+expand_icon = true
+metadata/filter_type = "SHIELD"
+
+[node name="BtnFilterHELMET" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("10_6asax")
+expand_icon = true
+metadata/filter_type = "HELMET"
+
+[node name="BtnFilterCHEST" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("11_a58ny")
+expand_icon = true
+metadata/filter_type = "CHEST"
+
+[node name="BtnFilterARMS" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("12_pfxef")
+expand_icon = true
+metadata/filter_type = "ARMS"
+
+[node name="BtnFilterBOOTS" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("13_bm6oh")
+expand_icon = true
+metadata/filter_type = "BOOTS"
+
+[node name="BtnFilterCAPE" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("14_f7ycs")
+expand_icon = true
+metadata/filter_type = "CAPE"
+
+[node name="BtnFilterBELT" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("15_8bw5x")
+expand_icon = true
+metadata/filter_type = "BELT"
+
+[node name="BtnFilterQUEST" type="Button" parent="MainPanel/HBoxContainer/VBoxContainer/HeaderControls/FilterSection"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("16_bsgoa")
+expand_icon = true
+metadata/filter_type = "QUEST"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_3uskr")
+
+[node name="ItemListContainer" type="VBoxContainer" parent="MainPanel/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TooltipLayer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="MainTooltip" parent="TooltipLayer" instance=ExtResource("3_gvwsh")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 86.0
+
+[node name="CompareTooltip" parent="TooltipLayer" instance=ExtResource("3_gvwsh")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 86.0
+
+[node name="CompareTooltip2" parent="TooltipLayer" instance=ExtResource("3_gvwsh")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 86.0
+
+[node name="ContextMenu" parent="." instance=ExtResource("4_73x1u")]
+visible = false
+layout_mode = 0
+
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/HelmetSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/ChestSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/CapeSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/LeftHandSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/RightHandSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/BeltSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/ArmsSlot" to="." method="_on_equipment_slot_right_clicked"]
+[connection signal="slot_right_clicked" from="MainPanel/HBoxContainer/EquipmentSide/BootsSlot" to="." method="_on_equipment_slot_right_clicked"]

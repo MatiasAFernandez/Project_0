@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3s5eapw7ee64"]
+
+[ext_resource type="PackedScene" uid="uid://dln8nl77wnni4" path="res://game/exploration/locations/BaseLocation.tscn" id="1_ylqxf"]
+[ext_resource type="AudioStream" uid="uid://f2wca2blbr5m" path="res://tests/music/Stallside Sunlight.mp3" id="2_54nwi"]
+[ext_resource type="PackedScene" uid="uid://baifuqpoyltbf" path="res://game/exploration/interactables/ClickableArea.tscn" id="2_vi5y3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn34h"]
+size = Vector2(175.5, 312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duuvm"]
+size = Vector2(276.5, 221)
+
+[node name="ZoneB" instance=ExtResource("1_ylqxf")]
+location_name = "ZoneB"
+background_music = ExtResource("2_54nwi")
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Sky" index="0"]
+offset_left = -90.0
+offset_top = -19.0
+offset_right = 1223.0
+offset_bottom = 71.0
+mouse_filter = 2
+color = Color(0.34596676, 0.30324185, 0.24128315, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Midground" index="0"]
+offset_left = -78.0
+offset_top = 51.0
+offset_right = 1212.0
+offset_bottom = 560.0
+mouse_filter = 2
+color = Color(0.6006386, 0.7357952, 0.29550484, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Layers/Midground" index="1"]
+offset_left = 38.0
+offset_top = 179.0
+offset_right = 212.0
+offset_bottom = 495.0
+mouse_filter = 2
+color = Color(0.58431375, 0.28235295, 0.13333334, 1)
+
+[node name="Puerta_Interior" parent="Layers/Midground" index="2" instance=ExtResource("2_vi5y3")]
+target_scene = "uid://dfm2egx1qspr2"
+cursor_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Midground/Puerta_Interior" index="0"]
+position = Vector2(127.25, 336)
+shape = SubResource("RectangleShape2D_dn34h")
+
+[node name="ColorRect" type="ColorRect" parent="Layers/Foreground" index="0"]
+offset_left = -47.0
+offset_top = 493.0
+offset_right = 1188.0
+offset_bottom = 674.0
+mouse_filter = 2
+color = Color(0.6128754, 0.40737644, 0.22008327, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Layers/Foreground" index="1"]
+offset_left = 960.0
+offset_top = 491.0
+offset_right = 1033.0
+offset_bottom = 562.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Layers/Foreground" index="2"]
+offset_left = 1031.0
+offset_top = 442.0
+offset_right = 1104.0
+offset_bottom = 562.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Layers/Foreground" index="3"]
+offset_left = 1097.0
+offset_top = 390.0
+offset_right = 1170.0
+offset_bottom = 562.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Layers/Foreground" index="4"]
+offset_left = 1163.0
+offset_top = 341.0
+offset_right = 1236.0
+offset_bottom = 560.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Escaleras" parent="Layers/Foreground" index="5" instance=ExtResource("2_vi5y3")]
+target_scene = "uid://3ln1vbd3rgn6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Foreground/Escaleras" index="0"]
+position = Vector2(1097.75, 451.5)
+shape = SubResource("RectangleShape2D_duuvm")
