@@ -69,6 +69,9 @@ func get_gear_in_slot(slot_name: String) -> ItemData:
 func equip_item_to_slot(inventory_slot: SlotData, target_slot: String) -> void:
 	equip_manager.equip_item_to_slot(inventory_slot, target_slot)
 
+func can_equip_in_slot(item, slot): 
+	return equip_manager.can_equip_in_slot(item, slot)
+
 func unequip_slot(slot_name: String) -> void:
 	equip_manager.unequip_slot(slot_name)
 

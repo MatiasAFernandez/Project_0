@@ -148,41 +148,28 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	
 	var incoming_item: ItemData = data.item
 	
-	# 2. Validar reglas de PlayerSession
-	# En lugar de hardcodear reglas aquí, le preguntamos a la sesión si "es el mejor slot"
-	# o hacemos una validación manual robusta basada en ItemData.
-	
-	# Regla estricta: ¿Este ítem PERTENECE a este tipo de slot?
-	match slot_name:
-		PlayerSession.SLOT_MAIN_HAND:
-			return incoming_item.type in [
-				ItemData.ItemType.WEAPON_SHORT, 
-				ItemData.ItemType.WEAPON_MEDIUM, 
-				ItemData.ItemType.WEAPON_HEAVY
-			] or (incoming_item.is_dual_wieldable) # Casos especiales
-			
-		PlayerSession.SLOT_OFF_HAND:
-			return incoming_item.type == ItemData.ItemType.SHIELD or \
-				   incoming_item.is_dual_wieldable
-				
-		PlayerSession.SLOT_HEAD: return incoming_item.type == ItemData.ItemType.HELMET
-		PlayerSession.SLOT_CHEST: return incoming_item.type == ItemData.ItemType.CHEST
-		PlayerSession.SLOT_ARMS: return incoming_item.type == ItemData.ItemType.ARMS
-		PlayerSession.SLOT_BOOTS: return incoming_item.type == ItemData.ItemType.BOOTS
-		PlayerSession.SLOT_CAPE: return incoming_item.type == ItemData.ItemType.CAPE
-		PlayerSession.SLOT_BELT: return incoming_item.type == ItemData.ItemType.BELT
-	
-	return false
+	# 2. Delegar la decisión al Gestor de Equipamiento
+	return PlayerSession.can_equip_in_slot(incoming_item, slot_name)
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	if data.source == "inventory":
-		# Caso A: Arrastrar desde Inventario -> Equipar
-		# "origin_slot_data" viene del InventorySlotUI.gd
-		if data.has("origin_slot_data"):
-			PlayerSession.equip_item_to_slot(data.origin_slot_data, slot_name)
-			
-	elif data.source == "equipment":
-		# Caso B: Arrastrar desde otro equipo -> Swap (Intercambio)
-		var from_slot = data.origin_slot
-		if from_slot != slot_name:
-			PlayerSession.swap_slots(from_slot, slot_name)
+	# 1. Validación de seguridad absoluta
+	if typeof(data) != TYPE_DICTIONARY or not data.has("source"):
+		return
+		
+	# 2. Procesamiento según el origen del Drag & Drop
+	match data.source:
+		"inventory":
+			# Caso A: Arrastrar desde Inventario -> Equipar
+			if data.has("origin_slot_data") and data.origin_slot_data != null:
+				PlayerSession.equip_item_to_slot(data.origin_slot_data, slot_name)
+				
+		"equipment":
+			# Caso B: Arrastrar desde otro slot de equipo -> Intercambiar (Swap)
+			if data.has("origin_slot"):
+				var from_slot = data.origin_slot
+				# Evitamos que el jugador intercambie un ítem consigo mismo
+				if from_slot != slot_name:
+					PlayerSession.swap_slots(from_slot, slot_name)
+		_:
+			# Si en el futuro arrastras desde una tienda o un cofre, lo manejarás aquí
+			push_warning("EquipmentSlotUI: Origen de drag desconocido ('%s')" % data.source)

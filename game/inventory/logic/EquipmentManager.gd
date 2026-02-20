@@ -30,7 +30,7 @@ func get_gear_in_slot(slot_name: String) -> ItemData:
 func equip_item_to_slot(inventory_slot: SlotData, target_slot: String) -> void:
 	var item_to_equip = inventory_slot.item_data
 	
-	if not _can_equip_in_slot(item_to_equip, target_slot):
+	if not can_equip_in_slot(item_to_equip, target_slot):
 		print("EquipmentManager: Item no permitido en slot ", target_slot)
 		return
 
@@ -66,11 +66,11 @@ func swap_slots(from_slot: String, to_slot: String) -> void:
 	var item_moving = equipped_gear[from_slot]
 	var item_displaced = equipped_gear[to_slot]
 	
-	if item_moving and not _can_equip_in_slot(item_moving, to_slot):
+	if item_moving and not can_equip_in_slot(item_moving, to_slot):
 		_emit_all_gear_updates() 
 		return
 
-	if item_displaced and not _can_equip_in_slot(item_displaced, from_slot):
+	if item_displaced and not can_equip_in_slot(item_displaced, from_slot):
 		_handle_asymmetric_swap(from_slot, to_slot, item_moving, item_displaced)
 		return
 
@@ -89,7 +89,7 @@ func destroy_equipment_in_slot(slot_name: String) -> void:
 
 # --- REGLAS PRIVADAS (Idénticas a tu código original) ---
 
-func _can_equip_in_slot(item: ItemData, slot: String) -> bool:
+func can_equip_in_slot(item: ItemData, slot: String) -> bool:
 	if item == null: return true 
 	match slot:
 		SLOT_MAIN_HAND: return item.type != ItemData.ItemType.SHIELD
